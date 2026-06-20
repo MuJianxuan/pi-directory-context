@@ -1,0 +1,53 @@
+{
+  "name": "pi-directory-context",
+  "version": "0.1.0",
+  "description": "Pi extension package that injects working-directory environment context into the system prompt.",
+  "author": "rao",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuJianxuan/pi-directory-context.git"
+  },
+  "homepage": "https://github.com/MuJianxuan/pi-directory-context#readme",
+  "bugs": {
+    "url": "https://github.com/MuJianxuan/pi-directory-context/issues"
+  },
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-coding-agent",
+    "extension",
+    "context",
+    "directory"
+  ],
+  "files": [
+    "extensions/",
+    "src/",
+    "index.ts",
+    "README.md",
+    "CHANGELOG.md",
+    ".docs/"
+  ],
+  "scripts": {
+    "check:import": "node --experimental-strip-types --input-type=module -e \"import('./extensions/directory-context.ts')\"",
+    "pack:check": "npm pack --dry-run",
+    "prepublishOnly": "npm run check:import && npm run pack:check"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/directory-context.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "0.79.8"
+  }
+}
