@@ -61,10 +61,10 @@ npm view pi-directory-context name
 当前版本是：
 
 ```json
-"version": "0.1.0"
+"version": "0.1.1"
 ```
 
-如果准备首次发布 `0.1.0`，保持不变即可。
+如果准备首次发布 `0.1.1`，保持不变即可。
 
 如果要调整版本，可修改 `package.json` 后再执行发布前检查。
 

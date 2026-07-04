@@ -1,10 +1,8 @@
-import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
 
 export interface EnvironmentContext {
-  cwd: string;
-  workspaceRoot?: string;
+  workspaceRoot: string;
   currentDate: string;
   timezone: string;
   shell: {
@@ -27,15 +25,13 @@ export async function collectEnvironmentContext(
   cwd: string,
 ): Promise<EnvironmentContext> {
   const context: EnvironmentContext = {
-    cwd,
+    workspaceRoot: cwd,
     currentDate: new Date().toISOString().split("T")[0],
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     shell: detectShell(),
     os: collectOsInfo(),
     runtime: detectRuntime(),
   };
-
-  context.workspaceRoot = findWorkspaceRoot(cwd);
 
   return context;
 }
@@ -73,42 +69,13 @@ function detectRuntime(): { name: string; version: string } {
   };
 }
 
-function findWorkspaceRoot(startDir: string): string | undefined {
-  let currentDir = startDir;
-
-  while (true) {
-    const gitPath = path.join(currentDir, ".git");
-
-    try {
-      if (fs.existsSync(gitPath)) {
-        return currentDir;
-      }
-    } catch {
-      // Ignore permission errors and continue scanning upward.
-    }
-
-    const parentDir = path.dirname(currentDir);
-    if (parentDir === currentDir) {
-      break;
-    }
-
-    currentDir = parentDir;
-  }
-
-  return undefined;
-}
-
 export function buildContextXml(context: EnvironmentContext): string {
   const lines: string[] = [];
 
   lines.push("<environment_context>");
-  lines.push(`  <cwd>${escapeXml(context.cwd)}</cwd>`);
-
-  if (context.workspaceRoot) {
-    lines.push("  <workspace>");
-    lines.push(`    <root>${escapeXml(context.workspaceRoot)}</root>`);
-    lines.push("  </workspace>");
-  }
+  lines.push("  <workspace>");
+  lines.push(`    <root>${escapeXml(context.workspaceRoot)}</root>`);
+  lines.push("  </workspace>");
 
   lines.push(
     `  <shell type="${escapeXml(context.shell.type)}">${escapeXml(context.shell.path)}</shell>`,

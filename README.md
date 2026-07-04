@@ -7,8 +7,7 @@
 ## 当前能力
 
 注入的信息包括：
-- `cwd`
-- `workspaceRoot`（向上查找 `.git` 时可用）
+- `workspaceRoot`（当前目录绝对路径）
 - `currentDate`
 - `timezone`
 - `shell`
@@ -19,7 +18,6 @@
 
 ```xml
 <environment_context>
-  <cwd>/path/to/project</cwd>
   <workspace>
     <root>/path/to/project</root>
   </workspace>

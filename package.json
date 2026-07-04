@@ -1,6 +1,6 @@
 {
   "name": "pi-directory-context",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pi extension package that injects working-directory environment context into the system prompt.",
   "author": "rao",
   "license": "MIT",

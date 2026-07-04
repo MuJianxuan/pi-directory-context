@@ -1,0 +1,89 @@
+{
+  "nextId": 11,
+  "tasks": [
+    {
+      "id": "4",
+      "subject": "复核目录上下文实现与约束",
+      "description": "按 feature-dev 流程复核当前扩展的相关实现、入口链路和约束，确认最小改动方案：移除 cwd 注入，将 workspace.root 改为当前目录绝对路径，并识别使扩展无法导入的最小修复点。",
+      "status": "completed",
+      "activeForm": "复核目录上下文实现",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1783133212134,
+      "updatedAt": 1783133390460
+    },
+    {
+      "id": "5",
+      "subject": "实现最小注入改动",
+      "description": "修改目录上下文注入逻辑，删除 `<cwd>` 输出，保留 `<environment_context>` 与 `<workspace><root>...</root></workspace>`，并将 root 直接设置为当前目录绝对路径。仅做与该需求直接相关的最小修复。",
+      "status": "completed",
+      "activeForm": "实现最小注入改动",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1783133217931,
+      "updatedAt": 1783133483891
+    },
+    {
+      "id": "6",
+      "subject": "验证扩展可导入并复查输出",
+      "description": "运行导入检查，必要时补充只读验证，确认扩展能够导入、`cwd` 不再输出、`workspace.root` 使用当前目录绝对路径。",
+      "status": "completed",
+      "activeForm": "验证扩展可导入并复查输出",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1783133223161,
+      "updatedAt": 1783133508243
+    },
+    {
+      "id": "7",
+      "subject": "做一次实现复查",
+      "description": "从简洁性、功能正确性和项目约束三个角度复查本次改动，确保没有引入额外行为或遗漏。",
+      "status": "completed",
+      "activeForm": "复查实现",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1783133233337,
+      "updatedAt": 1783133653782
+    },
+    {
+      "id": "8",
+      "subject": "核对当前发布现状",
+      "description": "检查 package.json、CHANGELOG、README 和发布说明，确认当前版本、包名、发布脚本和需要同步的文档位置。验收：列出当前现状和待决策项。",
+      "status": "completed",
+      "activeForm": "核对发布现状",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1783134225729,
+      "updatedAt": 1783134276195
+    },
+    {
+      "id": "9",
+      "subject": "确定升级与发布目标",
+      "description": "和用户确认这次是仅准备发布，还是要连同本地校验、版本升级、changelog 更新、打包检查一起完成，并确认目标版本号与发布渠道。验收：得到明确版本与范围。",
+      "status": "completed",
+      "activeForm": "确定升级与发布目标",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1783134233372,
+      "updatedAt": 1783134364557
+    },
+    {
+      "id": "10",
+      "subject": "执行版本升级与发布准备",
+      "description": "在用户确认后，修改版本、同步 changelog/README 或发布文档、运行必要校验，准备发布所需状态。验收：版本号和文档一致，校验通过。",
+      "status": "completed",
+      "activeForm": "执行版本升级与发布准备",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1783134239276,
+      "updatedAt": 1783134558335
+    }
+  ]
+}
